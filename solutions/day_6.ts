@@ -1,14 +1,8 @@
-import dotenv from 'dotenv';
-
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_6.in`;
+import { getInputForDay } from './../helpers/getInputByDay';
 
 const freq = new Array(9).fill(0);
 
-fs.readFileSync(PATH, 'utf-8').split(',').forEach(fish => ++freq[+fish]);
+getInputForDay(6).split(',').forEach(fish => ++freq[+fish]);
 
 const getTheStar = (days: number) => {
   while (days--) {

@@ -1,7 +1,4 @@
-import fs from 'fs';
-import { config } from 'dotenv';
-
-config({ path: './.env' });
+import { getInputForDay } from './../helpers/getInputByDay';
 
 type Close = { '(': ')', '[': ']', '{': '}', '<': '>' };
 type Points = { ')': number, ']': number, '}': number, '>': number };
@@ -10,13 +7,11 @@ const OPEN = '([{<';
 const CLOSE: Close = { '(': ')', '[': ']', '{': '}', '<': '>' };
 const POINTS1: Points = { ')': 3, ']': 57, '}': 1197, '>': 25137 };
 const POINTS2: Points = { ')': 1, ']': 2, '}': 3, '>': 4 };
-const PATH = `${process.env.ROOT_PATH}/day_10.in`;
 
 let star1 = 0;
 let scores: number[] = [];
 
-fs
-  .readFileSync(PATH, 'utf-8')
+getInputForDay(10)
   .split('\n')
   .map(chunk => chunk.split(''))
   .forEach(chunk => {
@@ -42,4 +37,3 @@ fs
 const star2 = scores.sort((a, b) => a - b)[Math.floor(scores.length / 2)];
 
 export const day10 = () => ({ star1, star2 });
-

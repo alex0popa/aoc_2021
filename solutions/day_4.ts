@@ -1,15 +1,9 @@
-import dotenv from 'dotenv';
-
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_4.in`;
+import { getInputForDay } from './../helpers/getInputByDay';
 
 type El = string | number;
 type Board = El[][];
 
-const input = fs.readFileSync(PATH, 'utf-8').split('\n\n');
+const input = getInputForDay(4).split('\n\n');
 
 const nrs = input.shift()!.split(',');
 

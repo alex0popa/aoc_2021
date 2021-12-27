@@ -1,15 +1,8 @@
-import dotenv from 'dotenv';
+import { getInputForDay } from './../helpers/getInputByDay';
 
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_5.in`;
-
-const input = fs
-  .readFileSync(PATH, 'utf-8')
+const input = getInputForDay(5)
   .split('\n')
-  .map(l => l.split(' -> ').map(c => c.split(',')).flat().map(el => +el));
+  .map(l => l.split(' -> ').map(c => c.split(',')).flat().map(Number));
 
 const map = [...Array(1000)].map(() => [...Array(1000)].map(() => 0));
 

@@ -1,12 +1,6 @@
-import dotenv from 'dotenv';
+import { getInputForDay } from './../helpers/getInputByDay';
 
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_7.in`;
-
-const  input = fs.readFileSync(PATH, 'utf-8').split(',').map(e => +e);
+const input = getInputForDay(7).split(',').map(e => +e);
 
 const maxPosition = Math.max(...input) + 1;
 

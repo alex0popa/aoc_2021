@@ -1,12 +1,6 @@
-import dotenv from 'dotenv';
+import { getInputForDay } from './../helpers/getInputByDay';
 
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_8.in`;
-
-const  input = fs.readFileSync(PATH, 'utf-8')
+const input = getInputForDay(8).split('\n');
 
 const getSimples = (s: string) => s.split(' ').reduce(
   (x, y) => [2, 3, 4, 7].includes(y.length) ? ++x : x,
@@ -14,7 +8,6 @@ const getSimples = (s: string) => s.split(' ').reduce(
 );
 
 const star1 = input
-  .split('\n')
   .map(line => line
     .split(' | ')[1]
     .split(' ')
@@ -28,7 +21,6 @@ const star1 = input
 
 
 const star2 = input
-  .split('\n')
   .reduce((a, line) => {
     const [inp, out] = line.split(' | ');
 
@@ -41,7 +33,7 @@ const star2 = input
 
     let res = out.split(' ');
 
-    [...res].forEach((s, i) => {
+    res.forEach((s, i) => {
       if (s.length === 2) {
         res[i] = '1';
       } else if (s.length === 3) {
@@ -69,7 +61,7 @@ const star2 = input
       }
     });
 
-    return a+ +res.join('')
+    return a + +res.join('');
   }, 0);
 
 export const day8 = () => ({ star1, star2 });
