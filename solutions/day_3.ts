@@ -1,12 +1,6 @@
-import dotenv from 'dotenv';
+import { getInputForDay } from './../helpers/getInputByDay';
 
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_3.in`;
-
-const input = fs.readFileSync(PATH, 'utf-8').split('\n');
+const input = getInputForDay(3).split('\n');
 
 type GE = { gama: string, epsilon: string};
 

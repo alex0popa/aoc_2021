@@ -1,14 +1,8 @@
-import dotenv from 'dotenv';
+import { getInputForDay } from './../helpers/getInputByDay';
 
-dotenv.config({ path: './.env' });
-
-import fs from 'fs';
-
-const PATH = `${process.env.ROOT_PATH}/day_9.in`;
-
-const  input = fs.readFileSync(PATH, 'utf-8')
+const input = getInputForDay(9)
   .split('\n')
-  .map(line => line.split('').map(el => +el));
+  .map(line => line.split('').map(Number));
 
 const isSmallest = (i: number, j: number) => {
   const [u, r, d, l, x] = [
@@ -26,7 +20,6 @@ const isSmallest = (i: number, j: number) => {
     (isNaN(l) || x < l)
   );
 };
-
 
 const basins = [];
 let star1 = 0;
